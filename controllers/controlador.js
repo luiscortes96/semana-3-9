@@ -10,11 +10,10 @@ exports.login = async(req, res, next)=>{
     try{ 
         
         const user = await models.user.findOne({where: {email: req.body.email}});
-        console.log(user)
         if (user) {
             
             const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-            console.log(req.body.password)
+
             if (passwordIsValid) {
                 
                 const token= jwt.sign({
