@@ -25,6 +25,8 @@ exports.login = async(req, res, next)=>{
                 });
                 res.status(200).send({
                     accessToken: token,
+                    user:user,
+                    auth: true
                 })                
             }else{
                 res.status(401).send({
